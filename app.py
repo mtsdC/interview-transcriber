@@ -180,11 +180,12 @@ def copy_button(text_to_copy, button_text="Copier"):
                 padding: 0;
                 background-color: #0A0A0A;
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                overflow: visible;
             }}
         </style>
     </head>
     <body>
-        <div style="width: 100%; height: 56px; background-color: #0A0A0A; margin: 0; padding: 0;">
+        <div style="width: 100%; height: 60px; background-color: #0A0A0A; margin: 0; padding: 4px 0; box-sizing: border-box; overflow: visible;">
             <button id="{button_id}" style="
                 background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
                 backdrop-filter: blur(10px);
@@ -229,7 +230,7 @@ def copy_button(text_to_copy, button_text="Copier"):
     </html>
     """
     
-    components.html(html, height=56)
+    components.html(html, height=60)
 
 def link_button(button_text, url):
     """Bouton lien avec style identique au bouton copier"""
@@ -246,11 +247,12 @@ def link_button(button_text, url):
                 padding: 0;
                 background-color: #0A0A0A;
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                overflow: visible;
             }}
         </style>
     </head>
     <body>
-        <div style="width: 100%; height: 56px; background-color: #0A0A0A; margin: 0; padding: 0;">
+        <div style="width: 100%; height: 60px; background-color: #0A0A0A; margin: 0; padding: 4px 0; box-sizing: border-box; overflow: visible;">
             <button id="{button_id}" style="
                 background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
                 backdrop-filter: blur(10px);
@@ -279,7 +281,7 @@ def link_button(button_text, url):
     </html>
     """
     
-    components.html(html, height=56)
+    components.html(html, height=60)
 
 def generate_pdf(transcription, interview_name, date, progress_bar=None):
     if progress_bar:
