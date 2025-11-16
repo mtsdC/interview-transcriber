@@ -116,6 +116,11 @@ st.markdown("""
     hr {
         border-color: #333333 !important;
     }
+
+    /* Force un fond sombre pour les iframes des components.html */
+    iframe {
+        background-color: #0A0A0A !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -125,15 +130,12 @@ def custom_button(button_text, button_type="copy", url=None):
     button_id = f"btn_{abs(hash(button_text + str(time.time()))) % 100000}"
     
     if button_type == "copy":
-        # Pour le bouton copier, on a besoin du texte à copier
-        # On le récupérera via un attribut data
         onclick_action = f"copyText_{button_id}()"
     else:
-        # Pour le bouton lien
         onclick_action = f"window.open('{url}', '_blank')"
     
     html = f"""
-    <div style="width: 100%; height: 56px;">
+    <div style="width: 100%; height: 56px; background-color: #0A0A0A;">
         <button id="{button_id}" style="
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
             backdrop-filter: blur(10px);
@@ -169,7 +171,7 @@ def copy_button(text_to_copy, button_text="Copier"):
     text_escaped = json.dumps(text_to_copy)
     
     html = f"""
-    <div style="width: 100%; height: 56px;">
+    <div style="width: 100%; height: 56px; background-color: #0A0A0A;">
         <button id="{button_id}" style="
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
             backdrop-filter: blur(10px);
@@ -220,7 +222,7 @@ def link_button(button_text, url):
     button_id = f"btn_{abs(hash(button_text + url)) % 100000}"
     
     html = f"""
-    <div style="width: 100%; height: 56px;">
+    <div style="width: 100%; height: 56px; background-color: #0A0A0A;">
         <button id="{button_id}" style="
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
             backdrop-filter: blur(10px);
@@ -615,8 +617,13 @@ if st.session_state.get('generation_done', False):
     col1, col2 = st.columns([3, 1])
     
     with col1:
-        st.download_button("Télécharger PDF Transcription", st.session_state['pdf_buffer'], 
-                          st.session_state['pdf_filename'], mime="application/pdf", use_container_width=True)
+        st.download_button(
+            "Télécharger PDF Transcription",
+            st.session_state['pdf_buffer'], 
+            st.session_state['pdf_filename'],
+            mime="application/pdf",
+            use_container_width=True
+        )
     
     with col2:
         if st.button("Nouveau", use_container_width=True):
