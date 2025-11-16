@@ -116,6 +116,13 @@ st.markdown("""
     hr {
         border-color: #333333 !important;
     }
+
+    /* >>> CORRECTION POUR LES BOUTONS EN components.html <<< */
+    .stApp iframe {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
